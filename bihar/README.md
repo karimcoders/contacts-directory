@@ -2,8 +2,10 @@
 
 Live: https://karimcoders.github.io/contacts-directory/bihar/
 
-8,666 Bihar records (Farmers 5,078 · RTE 816 · Trainees 2,772) — search, filter,
-sort, detail sheet, CSV export, Aadhaar reveal.
+82,551 Bihar records (Kisan Directory 73,885 · KVK Farmers 5,078 · RTE 816 · Trainees 2,772) — search, filter, sort, detail sheet, CSV export, Aadhaar reveal.
+
+Kisan records me naam + gaon + block + mobile hai (Saran ke 20 blocks). Payload
+gzip karke encrypt hota hai, isliye 82k records ke baad bhi page ~1.6 MB ka hai.
 
 ## Ye page password se kaise protected hai
 
