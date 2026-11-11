@@ -2,10 +2,36 @@
 
 Live: https://karimcoders.github.io/contacts-directory/bihar/
 
-82,551 Bihar records (Kisan Directory 73,885 · KVK Farmers 5,078 · RTE 816 · Trainees 2,772) — search, filter, sort, detail sheet, CSV export, Aadhaar reveal.
+1,01,335 Bihar records (Kisan Directory 73,885 · KVK Farmers 5,078 · Contacts 18,784 · RTE 816 · Trainees 2,772) — search, filter, sort, detail sheet, CSV export, Aadhaar reveal.
 
 Kisan records me naam + gaon + block + mobile hai (Saran ke 20 blocks). Payload
-gzip karke encrypt hota hai, isliye 82k records ke baad bhi page ~1.6 MB ka hai.
+gzip karke encrypt hota hai, isliye 1 lakh records ke baad bhi page ~2 MB ka hai.
+
+## Types
+
+| Type | Kitne | Kahan se |
+|---|---|---|
+| Kisan | 73,885 | 20 `full-*.pdf` Kisan Directory (text layer, exact) |
+| Farmer | 5,078 | KVK farmer list |
+| Contact | 18,784 | 62 BLO / police / bank / business / office lists — Google Contacts print PDFs |
+| RTE | 816 | RTE list |
+| Trainee | 2,772 | Trainee list |
+
+Contact records me sirf wahi fields hain jo PDF me hain: naam + mobile, aur
+kahin-kahin gaon/block (file ke naam se exact match). Jahan PDF me gaon nahi
+tha, wahan `—` hi rehta hai — koi andaaza nahi lagaya jata.
+
+## OCR
+
+62 contact PDFs me se 9 me text layer tha (exact parse). 53 image-only the,
+unke liye Windows OCR do DPI pe chala:
+
+1. 200 dpi — poora coverage (~2,400 pages)
+2. 300 dpi — clarity ke liye, cross-check
+
+PHP merging priority: **PDF text layer > 300 dpi OCR > 200 dpi OCR**, phir
+10-digit valid mobile (6-9 se shuru) par dedupe. `Phone`/`Mobile` label ko
+kabhi naam nahi maana jata.
 
 ## Ye page password se kaise protected hai
 
